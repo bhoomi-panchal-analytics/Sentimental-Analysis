@@ -1,3 +1,5 @@
+# config.py
+
 VIX_TICKER = "^VIX"
 SPY_TICKER = "SPY"
 
@@ -8,3 +10,6 @@ RSS_FEEDS = [
 
 LOOKBACK_PERIOD = "5d"
 INTERVAL = "5m"
+
+SEQUENCE_LENGTH = 20
+DEVICE = "cpu"
