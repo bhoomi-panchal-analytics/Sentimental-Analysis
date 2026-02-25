@@ -30,17 +30,28 @@ st.title("Sentiment-Augmented Volatility Monitor")
 # LOAD MODELS (CACHED)
 # ---------------------------------------------------
 
+
+import os
+
 @st.cache_resource
 def load_models():
     cnn = ChartCNN()
-    cnn.load_state_dict(torch.load("models/cnn_weights.pth", map_location="cpu"))
-    cnn.eval()
+    lstm = LSTMForecaster(input_size=5)
 
-    lstm = load_lstm("models/lstm_weights.pth", input_size=5)
+    if os.path.exists("models/cnn_weights.pth"):
+        cnn.load_state_dict(
+            torch.load("models/cnn_weights.pth", map_location="cpu")
+        )
+
+    if os.path.exists("models/lstm_weights.pth"):
+        lstm.load_state_dict(
+            torch.load("models/lstm_weights.pth", map_location="cpu")
+        )
+
+    cnn.eval()
+    lstm.eval()
 
     return cnn, lstm
-
-cnn_model, lstm_model = load_models()
 
 # ---------------------------------------------------
 # DATA FETCHING (CACHED 60s)
