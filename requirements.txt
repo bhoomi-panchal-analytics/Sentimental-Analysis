@@ -1,0 +1,12 @@
+streamlit
+torch
+torchvision
+transformers
+feedparser
+yfinance
+pandas
+numpy
+matplotlib
+scikit-learn
+scipy
+Pillow
