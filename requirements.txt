@@ -10,3 +10,5 @@ matplotlib
 scikit-learn
 scipy
 Pillow
+accelerate
+sentencepiece
